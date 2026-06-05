@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keltner Channel vs Bollinger Bands vs Donchian Channel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#0b1020;
+    --card:#111827;
+    --card2:#1e293b;
+    --primary:#3b82f6;
+    --secondary:#8b5cf6;
+    --success:#10b981;
+    --warning:#f59e0b;
+    --danger:#ef4444;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --border:rgba(255,255,255,0.08);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(135deg,#020617,#0f172a,#111827);
+    color:var(--text);
+    line-height:1.7;
+}
+
+.hero{
+    padding:100px 8%;
+    text-align:center;
+    background:
+    radial-gradient(circle at top left,#2563eb40,transparent 40%),
+    radial-gradient(circle at top right,#8b5cf640,transparent 40%);
+}
+
+.hero h1{
+    font-size:4rem;
+    font-weight:900;
+    margin-bottom:20px;
+    background:linear-gradient(90deg,#60a5fa,#a78bfa);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    max-width:900px;
+    margin:auto;
+    color:var(--muted);
+    font-size:1.15rem;
+}
+
+.container{
+    width:min(1300px,92%);
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2.3rem;
+    margin:80px 0 40px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(17,24,39,.75);
+    backdrop-filter:blur(12px);
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:30px;
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+.card h3{
+    margin-bottom:15px;
+    font-size:1.6rem;
+}
+
+.keltner h3{color:#60a5fa;}
+.bollinger h3{color:#a78bfa;}
+.donchian h3{color:#34d399;}
+
+.badge{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:.8rem;
+    margin-bottom:18px;
+    font-weight:700;
+}
+
+.blue{background:#2563eb22;color:#60a5fa;}
+.purple{background:#8b5cf622;color:#c4b5fd;}
+.green{background:#10b98122;color:#34d399;}
+
+ul{
+    margin-top:15px;
+    padding-left:20px;
+}
+
+li{
+    margin:8px 0;
+}
+
+.table-wrapper{
+    overflow-x:auto;
+    margin:40px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:900px;
+    background:var(--card);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+th{
+    background:#1e293b;
+    padding:18px;
+    text-align:left;
+}
+
+td{
+    padding:18px;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+tr:hover{
+    background:rgba(255,255,255,.03);
+}
+
+.pros-cons{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:25px;
+}
+
+.box{
+    padding:25px;
+    border-radius:20px;
+    background:var(--card);
+}
+
+.pros{
+    border-left:4px solid var(--success);
+}
+
+.cons{
+    border-left:4px solid var(--danger);
+}
+
+.strategy-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.strategy{
+    background:var(--card);
+    padding:25px;
+    border-radius:18px;
+}
+
+.highlight{
+    background:linear-gradient(135deg,#1e3a8a,#581c87);
+    padding:50px;
+    border-radius:30px;
+    margin:70px 0;
+}
+
+.highlight h2{
+    margin-bottom:20px;
+}
+
+footer{
+    text-align:center;
+    padding:50px;
+    color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+    <h1>Keltner Channel vs Bollinger Bands vs Donchian Channel</h1>
+    <p>
+        Three of the most popular volatility and trend-following indicators in technical analysis.
+        While they all use upper and lower bands around price, their calculations, behavior,
+        and ideal trading applications are very different.
+    </p>
+</section>
+
+<div class="container">
+
+    <h2 class="section-title">Understanding Each Indicator</h2>
+
+    <div class="cards">
+
+        <div class="card keltner">
+            <span class="badge blue">Trend + Volatility</span>
+            <h3>Keltner Channel</h3>
+
+            <p>
+                Keltner Channels are volatility-based envelopes built around an
+                Exponential Moving Average (EMA). The channel width is determined
+                by the Average True Range (ATR), making it highly effective for
+                trend-following strategies.
+            </p>
+
+            <ul>
+                <li>Middle Line = EMA</li>
+                <li>Upper Band = EMA + ATR Multiplier</li>
+                <li>Lower Band = EMA − ATR Multiplier</li>
+                <li>Smoother than Bollinger Bands</li>
+                <li>Excellent for trend confirmation</li>
+            </ul>
+        </div>
+
+        <div class="card bollinger">
+            <span class="badge purple">Volatility Analysis</span>
+            <h3>Bollinger Bands</h3>
+
+            <p>
+                Bollinger Bands use a moving average and standard deviation.
+                Because standard deviation reacts quickly to volatility changes,
+                Bollinger Bands expand and contract aggressively during market shifts.
+            </p>
+
+            <ul>
+                <li>Middle Line = SMA</li>
+                <li>Bands use Standard Deviation</li>
+                <li>Excellent for volatility detection</li>
+                <li>Popular for mean reversion trading</li>
+                <li>Band squeeze signals possible breakout</li>
+            </ul>
+        </div>
+
+        <div class="card donchian">
+            <span class="badge green">Breakout Trading</span>
+            <h3>Donchian Channel</h3>
+
+            <p>
+                Donchian Channels are based purely on price extremes.
+                The upper band is the highest high over a period and
+                the lower band is the lowest low.
+            </p>
+
+            <ul>
+                <li>Tracks highest highs and lowest lows</li>
+                <li>Widely used in Turtle Trading</li>
+                <li>Excellent breakout detector</li>
+                <li>Simple and objective</li>
+                <li>Best for trend-following systems</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <h2 class="section-title">Feature Comparison</h2>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Keltner Channel</th>
+                    <th>Bollinger Bands</th>
+                    <th>Donchian Channel</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Core Calculation</td>
+                    <td>EMA + ATR</td>
+                    <td>SMA + Standard Deviation</td>
+                    <td>Highest High / Lowest Low</td>
+                </tr>
+
+                <tr>
+                    <td>Volatility Sensitivity</td>
+                    <td>Medium</td>
+                    <td>Very High</td>
+                    <td>Low</td>
+                </tr>
+
+                <tr>
+                    <td>Trend Detection</td>
+                    <td>Excellent</td>
+                    <td>Moderate</td>
+                    <td>Excellent</td>
+                </tr>
+
+                <tr>
+                    <td>Breakout Detection</td>
+                    <td>Good</td>
+                    <td>Good</td>
+                    <td>Outstanding</td>
+                </tr>
+
+                <tr>
+                    <td>Mean Reversion</td>
+                    <td>Average</td>
+                    <td>Excellent</td>
+                    <td>Poor</td>
+                </tr>
+
+                <tr>
+                    <td>Noise Reduction</td>
+                    <td>High</td>
+                    <td>Medium</td>
+                    <td>Low</td>
+                </tr>
+
+                <tr>
+                    <td>Best Market Condition</td>
+                    <td>Trending Markets</td>
+                    <td>Range-Bound Markets</td>
+                    <td>Strong Breakouts</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="highlight">
+        <h2>Quick Summary</h2>
+        <p>
+            Keltner Channels provide smoother trend signals because ATR is less reactive
+            than standard deviation. Bollinger Bands react fastest to volatility changes,
+            making them excellent for squeeze and mean-reversion setups. Donchian Channels
+            focus entirely on price extremes and are one of the most effective breakout
+            indicators ever developed.
+        </p>
+    </div>
+
+    <h2 class="section-title">Pros & Cons</h2>
+
+    <div class="pros-cons">
+
+        <div class="box pros">
+            <h3>Keltner Channel Advantages</h3>
+            <ul>
+                <li>Smooth signals</li>
+                <li>Reduced false breakouts</li>
+                <li>Excellent trend identification</li>
+                <li>Works well with ATR-based risk management</li>
+            </ul>
+        </div>
+
+        <div class="box cons">
+            <h3>Keltner Channel Limitations</h3>
+            <ul>
+                <li>Can lag major reversals</li>
+                <li>Less sensitive to sudden volatility spikes</li>
+            </ul>
+        </div>
+
+        <div class="box pros">
+            <h3>Bollinger Band Advantages</h3>
+            <ul>
+                <li>Best volatility indicator</li>
+                <li>Popular squeeze strategy</li>
+                <li>Strong mean-reversion signals</li>
+                <li>Adaptive to market conditions</li>
+            </ul>
+        </div>
+
+        <div class="box cons">
+            <h3>Bollinger Band Limitations</h3>
+            <ul>
+                <li>Many false breakout signals</li>
+                <li>Sensitive during volatile markets</li>
+            </ul>
+        </div>
+
+        <div class="box pros">
+            <h3>Donchian Advantages</h3>
+            <ul>
+                <li>Simple and objective</li>
+                <li>Excellent breakout detection</li>
+                <li>Perfect for trend-followers</li>
+                <li>Used in legendary Turtle Trading systems</li>
+            </ul>
+        </div>
+
+        <div class="box cons">
+            <h3>Donchian Limitations</h3>
+            <ul>
+                <li>Many false signals in sideways markets</li>
+                <li>No volatility measurement</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <h2 class="section-title">When Should You Use Each?</h2>
+
+    <div class="strategy-grid">
+
+        <div class="strategy">
+            <h3>Use Keltner Channel</h3>
+            <p>
+                If your goal is identifying clean trends and avoiding excessive noise.
+                Preferred by swing traders and trend followers.
+            </p>
+        </div>
+
+        <div class="strategy">
+            <h3>Use Bollinger Bands</h3>
+            <p>
+                If you trade volatility expansion, squeezes, or mean-reversion setups.
+                Excellent in ranging markets.
+            </p>
+        </div>
+
+        <div class="strategy">
+            <h3>Use Donchian Channel</h3>
+            <p>
+                If you trade breakouts and momentum. Particularly effective during
+                strong directional market moves.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="highlight">
+        <h2>Final Verdict</h2>
+
+        <p>
+            <strong>Keltner Channel</strong> is generally the best choice for trend-following
+            because of its smoother ATR-based construction.
+            <br><br>
+
+            <strong>Bollinger Bands</strong> are superior for volatility analysis,
+            squeeze setups, and mean-reversion trading.
+            <br><br>
+
+            <strong>Donchian Channels</strong> remain the strongest breakout indicator,
+            making them ideal for momentum traders and systematic trend-following strategies.
+            <br><br>
+
+            Many professional traders combine all three:
+            Bollinger Bands for volatility,
+            Keltner Channels for trend quality,
+            and Donchian Channels for breakout confirmation.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    Designed for Traders • Technical Analysis Education • Responsive Modern UI
+</footer>
+
+</body>
+</html>

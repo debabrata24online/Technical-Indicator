@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hull Moving Average (HMA) Indicator Guide</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        font-family:'Poppins',sans-serif;
+        background:#f5f7fb;
+        color:#333;
+        line-height:1.8;
+    }
+
+    .hero{
+        background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+        color:white;
+        padding:100px 10%;
+        text-align:center;
+    }
+
+    .hero h1{
+        font-size:3rem;
+        margin-bottom:20px;
+    }
+
+    .hero p{
+        max-width:800px;
+        margin:auto;
+        font-size:1.1rem;
+        opacity:.9;
+    }
+
+    .container{
+        width:90%;
+        max-width:1200px;
+        margin:auto;
+        padding:60px 0;
+    }
+
+    .card{
+        background:white;
+        border-radius:18px;
+        padding:35px;
+        margin-bottom:30px;
+        box-shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+
+    h2{
+        color:#1e3a8a;
+        margin-bottom:18px;
+        font-size:2rem;
+    }
+
+    h3{
+        color:#0f172a;
+        margin:25px 0 10px;
+    }
+
+    p{
+        margin-bottom:15px;
+    }
+
+    ul{
+        padding-left:25px;
+    }
+
+    li{
+        margin-bottom:10px;
+    }
+
+    .formula{
+        background:#eef4ff;
+        border-left:5px solid #2563eb;
+        padding:20px;
+        border-radius:10px;
+        margin:20px 0;
+        font-size:1.05rem;
+    }
+
+    .grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+        gap:25px;
+        margin-top:20px;
+    }
+
+    .feature{
+        background:linear-gradient(135deg,#ffffff,#f4f8ff);
+        padding:25px;
+        border-radius:15px;
+        border:1px solid #dbeafe;
+    }
+
+    .feature h4{
+        color:#1d4ed8;
+        margin-bottom:10px;
+    }
+
+    .table-wrapper{
+        overflow-x:auto;
+        margin-top:20px;
+    }
+
+    table{
+        width:100%;
+        border-collapse:collapse;
+    }
+
+    table th{
+        background:#1e3a8a;
+        color:white;
+        padding:15px;
+    }
+
+    table td{
+        padding:15px;
+        border-bottom:1px solid #e5e7eb;
+        background:white;
+    }
+
+    .highlight{
+        background:linear-gradient(135deg,#2563eb,#1e40af);
+        color:white;
+        padding:40px;
+        border-radius:18px;
+        margin-top:30px;
+    }
+
+    footer{
+        text-align:center;
+        padding:30px;
+        background:#0f172a;
+        color:white;
+    }
+
+    .badge{
+        display:inline-block;
+        background:#dbeafe;
+        color:#1e3a8a;
+        padding:8px 18px;
+        border-radius:30px;
+        font-weight:600;
+        margin-bottom:15px;
+    }
+</style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="badge">Technical Analysis Indicator</div>
+    <h1>Hull Moving Average (HMA)</h1>
+    <p>
+        A powerful trend-following indicator designed to reduce lag while maintaining smooth price action.
+        The Hull Moving Average helps traders identify trends earlier than traditional moving averages,
+        making it popular among swing traders, intraday traders, and investors.
+    </p>
+</section>
+
+<div class="container">
+
+    <div class="card">
+        <h2>What is the Hull Moving Average (HMA)?</h2>
+
+        <p>
+            The Hull Moving Average (HMA), developed by Alan Hull in 2005,
+            is an advanced moving average designed to solve two common problems
+            associated with traditional moving averages:
+        </p>
+
+        <ul>
+            <li>Lagging behind price movements.</li>
+            <li>Producing excessive noise when made more responsive.</li>
+        </ul>
+
+        <p>
+            HMA combines weighted moving averages and mathematical smoothing techniques
+            to provide a smoother and faster-reacting trend indicator.
+            It responds quickly to market changes while filtering out minor fluctuations.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>How the HMA is Calculated</h2>
+
+        <p>
+            The Hull Moving Average uses Weighted Moving Averages (WMA) rather than Simple Moving Averages (SMA).
+        </p>
+
+        <div class="formula">
+            <strong>Step 1:</strong><br>
+            WMA(n/2) × 2 − WMA(n)
+        </div>
+
+        <div class="formula">
+            <strong>Step 2:</strong><br>
+            Calculate the Weighted Moving Average of the result using √n period.
+        </div>
+
+        <div class="formula">
+            <strong>Final Formula:</strong><br>
+            HMA = WMA [ 2 × WMA(n/2) − WMA(n), √n ]
+        </div>
+
+        <p>
+            This unique calculation significantly reduces lag while preserving trend accuracy.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Why Traders Use HMA</h2>
+
+        <div class="grid">
+
+            <div class="feature">
+                <h4>Lower Lag</h4>
+                <p>
+                    HMA reacts faster to price changes than SMA and EMA,
+                    allowing traders to identify trend reversals sooner.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h4>Smooth Trend Detection</h4>
+                <p>
+                    Despite being responsive, HMA remains smooth and reduces market noise.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h4>Clear Signals</h4>
+                <p>
+                    Traders can easily identify bullish and bearish trends using slope changes.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h4>Versatile Usage</h4>
+                <p>
+                    Suitable for stocks, forex, commodities, crypto, and indices.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Trading Signals from HMA</h2>
+
+        <h3>1. Trend Direction</h3>
+        <ul>
+            <li>Upward HMA = Bullish trend.</li>
+            <li>Downward HMA = Bearish trend.</li>
+            <li>Flat HMA = Consolidation or sideways market.</li>
+        </ul>
+
+        <h3>2. Price Crossing HMA</h3>
+        <ul>
+            <li>Price moves above HMA → Potential buy signal.</li>
+            <li>Price moves below HMA → Potential sell signal.</li>
+        </ul>
+
+        <h3>3. HMA Turning Points</h3>
+        <p>
+            Many traders focus on the turning points of the HMA rather than crossovers.
+            A change in slope often indicates an early shift in momentum.
+        </p>
+
+        <h3>4. Multiple HMA Strategy</h3>
+        <p>
+            Combining a short-term and long-term HMA can generate crossover signals
+            similar to traditional moving-average systems.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Recommended HMA Period Settings</h2>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Trading Style</th>
+                        <th>Recommended HMA</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Scalping</td>
+                        <td>9 – 14</td>
+                        <td>Fast reaction to price changes</td>
+                    </tr>
+                    <tr>
+                        <td>Intraday Trading</td>
+                        <td>20 – 34</td>
+                        <td>Trend identification</td>
+                    </tr>
+                    <tr>
+                        <td>Swing Trading</td>
+                        <td>50 – 100</td>
+                        <td>Medium-term trends</td>
+                    </tr>
+                    <tr>
+                        <td>Long-Term Investing</td>
+                        <td>150 – 200</td>
+                        <td>Major trend analysis</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Advantages of HMA</h2>
+
+        <ul>
+            <li>Reduces lag significantly.</li>
+            <li>Provides smoother trend visualization.</li>
+            <li>Generates earlier entry opportunities.</li>
+            <li>Works well across multiple markets.</li>
+            <li>Easy to combine with RSI, MACD, and price action strategies.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Limitations of HMA</h2>
+
+        <ul>
+            <li>Can produce false signals in highly volatile markets.</li>
+            <li>Not ideal during prolonged sideways movement.</li>
+            <li>Should not be used as a standalone indicator.</li>
+            <li>Requires confirmation from volume or momentum indicators.</li>
+        </ul>
+    </div>
+
+    <div class="highlight">
+        <h2 style="color:white;">Professional Trading Tip</h2>
+        <p>
+            Many professional traders combine the Hull Moving Average with RSI and support/resistance analysis.
+            Instead of relying solely on crossovers, they focus on HMA slope changes, trend direction,
+            and confirmation from market structure to improve trade accuracy.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    <p>
+        Hull Moving Average (HMA) Guide • Modern Technical Analysis • Designed for Traders & Investors
+    </p>
+</footer>
+
+</body>
+</html>

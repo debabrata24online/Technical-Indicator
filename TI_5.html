@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coppock Curve Indicator - Complete Guide</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --primary:#2563eb;
+    --secondary:#7c3aed;
+    --dark:#0f172a;
+    --light:#f8fafc;
+    --card:#ffffff;
+    --text:#334155;
+    --success:#10b981;
+    --warning:#f59e0b;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f1f5f9;
+    color:var(--text);
+    line-height:1.8;
+}
+
+.hero{
+    background:linear-gradient(135deg,#1e3a8a,#7c3aed);
+    color:white;
+    padding:100px 20px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:3.5rem;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:800px;
+    margin:auto;
+    font-size:1.15rem;
+    opacity:.95;
+}
+
+.container{
+    width:min(1200px,92%);
+    margin:auto;
+}
+
+.section{
+    padding:80px 0;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:30px;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
+
+h2{
+    color:var(--dark);
+    margin-bottom:20px;
+    font-size:2rem;
+}
+
+h3{
+    margin:25px 0 15px;
+    color:#1e293b;
+}
+
+p{
+    margin-bottom:15px;
+}
+
+.highlight{
+    background:linear-gradient(135deg,#eff6ff,#ede9fe);
+    border-left:6px solid var(--primary);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.feature{
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.feature h4{
+    color:var(--primary);
+    margin-bottom:10px;
+}
+
+.formula{
+    background:#0f172a;
+    color:white;
+    padding:25px;
+    border-radius:15px;
+    font-size:1.1rem;
+    overflow:auto;
+    margin:20px 0;
+}
+
+.steps{
+    counter-reset:item;
+}
+
+.steps li{
+    list-style:none;
+    margin-bottom:15px;
+    padding-left:60px;
+    position:relative;
+}
+
+.steps li::before{
+    counter-increment:item;
+    content:counter(item);
+    position:absolute;
+    left:0;
+    top:0;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:var(--primary);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th{
+    background:var(--primary);
+    color:white;
+}
+
+th,td{
+    padding:14px;
+    border:1px solid #e2e8f0;
+    text-align:left;
+}
+
+tr:nth-child(even){
+    background:#f8fafc;
+}
+
+.pros{
+    border-top:5px solid var(--success);
+}
+
+.cons{
+    border-top:5px solid #ef4444;
+}
+
+.footer{
+    background:var(--dark);
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.badge{
+    display:inline-block;
+    background:rgba(255,255,255,.15);
+    padding:10px 18px;
+    border-radius:30px;
+    margin-bottom:20px;
+}
+
+.quote{
+    font-size:1.2rem;
+    font-style:italic;
+    color:#475569;
+    border-left:4px solid var(--secondary);
+    padding-left:20px;
+    margin-top:20px;
+}
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:2.3rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="container">
+        <div class="badge">Technical Analysis Indicator</div>
+        <h1>Coppock Curve Indicator</h1>
+        <p>
+            A long-term momentum indicator designed to identify major buying
+            opportunities in financial markets by measuring market momentum
+            and detecting long-term trend reversals.
+        </p>
+    </div>
+</header>
+
+<section class="section">
+    <div class="container">
+
+        <div class="card highlight">
+            <h2>What is the Coppock Curve?</h2>
+
+            <p>
+                The <strong>Coppock Curve</strong> is a momentum-based technical
+                indicator developed by economist and market analyst
+                <strong>Edwin Sedgwick Coppock</strong> in 1962. It was originally
+                designed to identify long-term buying opportunities in stock
+                market indexes.
+            </p>
+
+            <p>
+                Coppock believed that market declines resemble periods of grief,
+                and after a significant decline investors require time to recover
+                emotionally before returning to the market. Based on this concept,
+                he created an indicator capable of identifying the end of bear
+                markets and the beginning of new bullish trends.
+            </p>
+
+            <div class="quote">
+                "The Coppock Curve is primarily used as a long-term buy signal
+                indicator rather than a short-term trading tool."
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>How the Coppock Curve is Calculated</h2>
+
+            <p>
+                The indicator combines two Rate of Change (ROC) calculations and
+                smooths them using a Weighted Moving Average (WMA).
+            </p>
+
+            <div class="formula">
+                Coppock Curve = WMA( ROC(14) + ROC(11), 10 )
+            </div>
+
+            <h3>Calculation Steps</h3>
+
+            <ol class="steps">
+                <li>Calculate the 14-month Rate of Change (ROC).</li>
+                <li>Calculate the 11-month Rate of Change (ROC).</li>
+                <li>Add both ROC values together.</li>
+                <li>Apply a 10-period Weighted Moving Average.</li>
+                <li>The resulting value forms the Coppock Curve.</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2>Key Components</h2>
+
+            <div class="grid">
+
+                <div class="feature">
+                    <h4>Rate of Change (ROC)</h4>
+                    <p>
+                        Measures the percentage change in price compared to a
+                        previous period, indicating market momentum strength.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <h4>Weighted Moving Average</h4>
+                    <p>
+                        Smooths price fluctuations and gives greater weight to
+                        recent market data.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <h4>Momentum Analysis</h4>
+                    <p>
+                        Helps traders determine whether bullish momentum is
+                        increasing or decreasing over time.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>How to Interpret the Coppock Curve</h2>
+
+            <table>
+                <tr>
+                    <th>Signal</th>
+                    <th>Meaning</th>
+                </tr>
+
+                <tr>
+                    <td>Curve Turns Up from Below Zero</td>
+                    <td>Strong Long-Term Buy Signal</td>
+                </tr>
+
+                <tr>
+                    <td>Curve Rising Above Zero</td>
+                    <td>Bullish Momentum Strengthening</td>
+                </tr>
+
+                <tr>
+                    <td>Curve Falling</td>
+                    <td>Momentum Weakening</td>
+                </tr>
+
+                <tr>
+                    <td>Curve Below Zero</td>
+                    <td>Market Remains Weak</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Trading Signals</h2>
+
+            <h3>1. Buy Signal</h3>
+            <p>
+                The most important signal occurs when the Coppock Curve changes
+                direction and turns upward after a prolonged decline below the
+                zero line. This often suggests the beginning of a new long-term
+                bullish trend.
+            </p>
+
+            <h3>2. Trend Confirmation</h3>
+            <p>
+                A steadily rising Coppock Curve indicates strengthening momentum
+                and supports an existing uptrend.
+            </p>
+
+            <h3>3. Divergence Analysis</h3>
+            <p>
+                If prices make new lows while the Coppock Curve makes higher
+                lows, a bullish divergence may be forming, indicating a potential
+                reversal.
+            </p>
+        </div>
+
+        <div class="grid">
+
+            <div class="card pros">
+                <h2>Advantages</h2>
+
+                <ul>
+                    <li>Excellent for long-term trend identification.</li>
+                    <li>Reduces market noise.</li>
+                    <li>Simple interpretation.</li>
+                    <li>Useful for investors and position traders.</li>
+                    <li>Effective in identifying major market bottoms.</li>
+                </ul>
+            </div>
+
+            <div class="card cons">
+                <h2>Limitations</h2>
+
+                <ul>
+                    <li>Lagging indicator by nature.</li>
+                    <li>Not ideal for intraday trading.</li>
+                    <li>Can miss early portions of trends.</li>
+                    <li>Less effective in sideways markets.</li>
+                    <li>Should not be used alone.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <h2>Best Practices</h2>
+
+            <div class="grid">
+
+                <div class="feature">
+                    <h4>Combine with Trend Analysis</h4>
+                    <p>
+                        Use support/resistance levels and trendlines to confirm
+                        signals.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <h4>Use with Volume</h4>
+                    <p>
+                        Increasing volume can strengthen the reliability of a
+                        Coppock Curve buy signal.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <h4>Long-Term Focus</h4>
+                    <p>
+                        Works best on weekly and monthly charts rather than
+                        short-term timeframes.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <h4>Risk Management</h4>
+                    <p>
+                        Always use proper position sizing and stop-loss
+                        strategies.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card highlight">
+            <h2>Conclusion</h2>
+
+            <p>
+                The Coppock Curve is a powerful long-term momentum indicator
+                primarily used to identify major market bottoms and emerging
+                bullish trends. While it is not suitable for short-term trading,
+                it remains highly respected among investors seeking long-term
+                trend confirmation.
+            </p>
+
+            <p>
+                For the best results, combine the Coppock Curve with trend
+                analysis, volume studies, and other technical indicators rather
+                than relying on it as a standalone system.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<footer class="footer">
+    <h3>Coppock Curve Technical Indicator Guide</h3>
+    <p>
+        Understanding Market Momentum • Identifying Long-Term Opportunities •
+        Better Investment Decisions
+    </p>
+</footer>
+
+</body>
+</html>

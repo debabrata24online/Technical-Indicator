@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guppy Multiple Moving Average (GMMA) - Complete Guide</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#07111f;
+    --card:#101c2f;
+    --primary:#38bdf8;
+    --secondary:#818cf8;
+    --success:#22c55e;
+    --text:#e5eefc;
+    --muted:#9fb0cc;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:
+    radial-gradient(circle at top left,#0ea5e930,transparent 35%),
+    radial-gradient(circle at bottom right,#7c3aed30,transparent 35%),
+    var(--bg);
+    color:var(--text);
+    line-height:1.8;
+}
+
+.container{
+    width:min(1200px,92%);
+    margin:auto;
+}
+
+/* Hero */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.badge{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:999px;
+    background:rgba(56,189,248,.12);
+    color:var(--primary);
+    border:1px solid rgba(56,189,248,.25);
+    margin-bottom:24px;
+    font-weight:600;
+}
+
+.hero h1{
+    font-size:clamp(3rem,8vw,5.5rem);
+    line-height:1.1;
+    font-weight:800;
+    margin-bottom:20px;
+    background:linear-gradient(90deg,#38bdf8,#818cf8,#22c55e);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:var(--muted);
+    font-size:1.15rem;
+    max-width:760px;
+    margin:auto;
+}
+
+.cta{
+    display:inline-block;
+    margin-top:35px;
+    padding:15px 34px;
+    border-radius:50px;
+    text-decoration:none;
+    color:white;
+    background:linear-gradient(135deg,#0ea5e9,#6366f1);
+    font-weight:700;
+    transition:.3s;
+}
+
+.cta:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 40px rgba(14,165,233,.35);
+}
+
+/* Sections */
+
+section{
+    padding:90px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.section-title h2{
+    font-size:2.7rem;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:var(--muted);
+}
+
+/* Cards */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(16,28,47,.85);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:24px;
+    padding:30px;
+    transition:.3s;
+    backdrop-filter:blur(10px);
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(56,189,248,.45);
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:var(--primary);
+}
+
+/* Explanation Block */
+
+.highlight-box{
+    background:linear-gradient(135deg,#0b1527,#162742);
+    border-left:5px solid var(--primary);
+    padding:35px;
+    border-radius:20px;
+}
+
+/* Moving Average Bands */
+
+.band-wrapper{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.band{
+    background:var(--card);
+    padding:30px;
+    border-radius:24px;
+    position:relative;
+    overflow:hidden;
+}
+
+.band::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    opacity:.15;
+}
+
+.band.short::before{
+    background:linear-gradient(135deg,#22c55e,#10b981);
+}
+
+.band.long::before{
+    background:linear-gradient(135deg,#818cf8,#38bdf8);
+}
+
+.band h3{
+    position:relative;
+    margin-bottom:15px;
+}
+
+/* Signal Timeline */
+
+.timeline{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.signal{
+    background:var(--card);
+    padding:25px;
+    border-left:4px solid var(--primary);
+    border-radius:18px;
+}
+
+/* Table */
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--card);
+    border-radius:18px;
+    overflow:hidden;
+}
+
+th{
+    background:#182840;
+    color:white;
+}
+
+th,td{
+    padding:18px;
+    text-align:left;
+}
+
+tr:not(:last-child){
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+/* Visual Example */
+
+.chart-demo{
+    background:#0d1728;
+    border-radius:24px;
+    padding:40px;
+}
+
+.line{
+    height:8px;
+    border-radius:999px;
+    margin:14px 0;
+}
+
+.green{background:#22c55e;}
+.blue{background:#38bdf8;}
+.purple{background:#818cf8;}
+.yellow{background:#facc15;}
+
+footer{
+    text-align:center;
+    padding:40px;
+    background:#040b15;
+    color:var(--muted);
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="badge">Advanced Trend Following Indicator</div>
+
+        <h1>Guppy Multiple Moving Average (GMMA)</h1>
+
+        <p>
+            The Guppy Multiple Moving Average is one of the most powerful trend-analysis
+            indicators used by professional traders to evaluate trend strength, market sentiment,
+            investor behavior, and potential breakout opportunities.
+        </p>
+
+        <a href="#overview" class="cta">Learn GMMA</a>
+    </div>
+</section>
+
+<!-- OVERVIEW -->
+
+<section id="overview">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>What is GMMA?</h2>
+            <p>Understanding the psychology behind market trends.</p>
+        </div>
+
+        <div class="highlight-box">
+            <p>
+                <strong>Guppy Multiple Moving Average (GMMA)</strong> was developed by
+                Australian trader and author <strong>Daryl Guppy</strong>.
+                Unlike traditional moving average systems that use only one or two averages,
+                GMMA combines multiple moving averages into two groups.
+            </p>
+
+            <br>
+
+            <p>
+                The indicator visualizes the relationship between
+                <strong>short-term traders</strong> and
+                <strong>long-term investors</strong>.
+                By studying the interaction between these two groups,
+                traders can identify trend strength, trend changes,
+                consolidations, and breakout opportunities.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- COMPONENTS -->
+
+<section>
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Components of GMMA</h2>
+            <p>Two groups of exponential moving averages.</p>
+        </div>
+
+        <div class="band-wrapper">
+
+            <div class="band short">
+                <h3>Short-Term Trader Group</h3>
+
+                <p>
+                    Represents active traders and market speculation.
+                </p>
+
+                <br>
+
+                <strong>EMAs:</strong>
+
+                <ul style="padding-left:20px;margin-top:10px;">
+                    <li>3 EMA</li>
+                    <li>5 EMA</li>
+                    <li>8 EMA</li>
+                    <li>10 EMA</li>
+                    <li>12 EMA</li>
+                    <li>15 EMA</li>
+                </ul>
+            </div>
+
+            <div class="band long">
+                <h3>Long-Term Investor Group</h3>
+
+                <p>
+                    Represents investors and institutional conviction.
+                </p>
+
+                <br>
+
+                <strong>EMAs:</strong>
+
+                <ul style="padding-left:20px;margin-top:10px;">
+                    <li>30 EMA</li>
+                    <li>35 EMA</li>
+                    <li>40 EMA</li>
+                    <li>45 EMA</li>
+                    <li>50 EMA</li>
+                    <li>60 EMA</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- VISUAL -->
+
+<section>
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Visual Structure</h2>
+            <p>How the moving average groups appear on a chart.</p>
+        </div>
+
+        <div class="chart-demo">
+
+            <h3 style="margin-bottom:20px;">
+                Strong Uptrend Example
+            </h3>
+
+            <div class="line green"></div>
+            <div class="line green"></div>
+            <div class="line green"></div>
+            <div class="line green"></div>
+
+            <div style="height:18px"></div>
+
+            <div class="line blue"></div>
+            <div class="line purple"></div>
+            <div class="line blue"></div>
+            <div class="line purple"></div>
+
+            <p style="margin-top:20px;color:var(--muted)">
+                When short-term EMAs remain clearly separated above long-term EMAs,
+                bullish momentum is considered strong.
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- INTERPRETATION -->
+
+<section>
+    <div class="container">
+
+        <div class="section-title">
+            <h2>How to Interpret GMMA</h2>
+            <p>Reading market sentiment using EMA relationships.</p>
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>Strong Uptrend</h3>
+                <p>
+                    Short-term EMA group remains above the long-term group
+                    with wide separation. Indicates strong buying pressure.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Strong Downtrend</h3>
+                <p>
+                    Short-term EMAs stay below long-term EMAs,
+                    showing sustained bearish sentiment.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Consolidation</h3>
+                <p>
+                    Both EMA groups compress and intertwine,
+                    suggesting uncertainty and reduced trend strength.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Trend Reversal</h3>
+                <p>
+                    Short-term averages cross the long-term group,
+                    signaling a possible shift in market direction.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- SIGNALS -->
+
+<section>
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Major Trading Signals</h2>
+            <p>How traders use GMMA for decision making.</p>
+        </div>
+
+        <div class="timeline">
+
+            <div class="signal">
+                <h3>1. EMA Expansion</h3>
+                <p>
+                    Expanding distance between moving averages indicates
+                    increasing trend strength and trader conviction.
+                </p>
+            </div>
+
+            <div class="signal">
+                <h3>2. EMA Compression</h3>
+                <p>
+                    Tight clustering of averages suggests weakening momentum
+                    and possible trend exhaustion.
+                </p>
+            </div>
+
+            <div class="signal">
+                <h3>3. Breakout Confirmation</h3>
+                <p>
+                    A breakout accompanied by widening separation between
+                    the two groups often confirms a genuine trend move.
+                </p>
+            </div>
+
+            <div class="signal">
+                <h3>4. Trend Reversal Signal</h3>
+                <p>
+                    When short-term EMAs decisively cross the long-term
+                    investor group, a trend reversal may be underway.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- STRATEGY -->
+
+<section>
+    <div class="container">
+
+        <div class="section-title">
+            <h2>GMMA Trading Strategy</h2>
+            <p>A practical approach used by many trend traders.</p>
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>Step 1</h3>
+                <p>
+                    Identify whether both EMA groups are aligned
+                    in the same direction.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Step 2</h3>
+                <p>
+                    Wait for a pullback toward the short-term EMA cluster.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Step 3</h3>
+                <p>
+                    Enter when price resumes movement
+                    in the trend direction.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Step 4</h3>
+                <p>
+                    Exit if EMA compression develops
+                    or a crossover signals weakness.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ADVANTAGES -->
+
+<section>
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Advantages & Limitations</h2>
+            <p>Know where GMMA performs best.</p>
+        </div>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Advantages</th>
+                        <th>Limitations</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Excellent trend identification</td>
+                        <td>Can lag during rapid reversals</td>
+                    </tr>
+
+                    <tr>
+                        <td>Visual representation of market psychology</td>
+                        <td>Produces noise in sideways markets</td>
+                    </tr>
+
+                    <tr>
+                        <td>Useful for breakout confirmation</td>
+                        <td>Requires practice to interpret correctly</td>
+                    </tr>
+
+                    <tr>
+                        <td>Works across stocks, forex, crypto, and indices</td>
+                        <td>Not ideal as a standalone signal generator</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- BEST PRACTICES -->
+
+<section>
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Best Practices</h2>
+            <p>How professionals use GMMA effectively.</p>
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>Combine With Volume</h3>
+                <p>
+                    Volume confirms whether trend strength is supported
+                    by market participation.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Use Higher Timeframes</h3>
+                <p>
+                    Daily and weekly charts often produce cleaner GMMA signals.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Follow Trend Direction</h3>
+                <p>
+                    GMMA performs best when used as a trend-following tool.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Apply Risk Management</h3>
+                <p>
+                    Always use stop losses and position sizing techniques.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- CONCLUSION -->
+
+<section>
+    <div class="container">
+
+        <div class="highlight-box">
+
+            <h2 style="margin-bottom:20px;">
+                Final Thoughts
+            </h2>
+
+            <p>
+                The <strong>Guppy Multiple Moving Average (GMMA)</strong>
+                is more than a moving average indicator. It provides a visual
+                representation of the battle between short-term traders and
+                long-term investors. By analyzing the separation, compression,
+                and crossover of these EMA groups, traders gain deeper insight
+                into trend strength and market psychology.
+            </p>
+
+            <br>
+
+            <p>
+                When combined with price action, volume analysis, support and
+                resistance levels, and sound risk management, GMMA becomes a
+                highly effective tool for identifying high-probability trend
+                trading opportunities.
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    Guppy Multiple Moving Average (GMMA) • Complete Technical Analysis Guide
+</footer>
+
+</body>
+</html>

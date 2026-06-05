@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMIIO Indicator Guide</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        font-family:'Poppins',sans-serif;
+        background:#f6f8fc;
+        color:#222;
+        line-height:1.7;
+    }
+
+    .hero{
+        background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+        color:white;
+        text-align:center;
+        padding:90px 10%;
+    }
+
+    .hero h1{
+        font-size:3rem;
+        margin-bottom:15px;
+    }
+
+    .hero p{
+        max-width:850px;
+        margin:auto;
+        opacity:.9;
+        font-size:1.1rem;
+    }
+
+    .badge{
+        display:inline-block;
+        background:#dbeafe;
+        color:#1e3a8a;
+        padding:8px 16px;
+        border-radius:30px;
+        margin-bottom:15px;
+        font-weight:600;
+    }
+
+    .container{
+        width:90%;
+        max-width:1200px;
+        margin:auto;
+        padding:60px 0;
+    }
+
+    .card{
+        background:white;
+        border-radius:18px;
+        padding:35px;
+        margin-bottom:25px;
+        box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    h2{
+        color:#1e3a8a;
+        margin-bottom:15px;
+        font-size:2rem;
+    }
+
+    h3{
+        margin-top:20px;
+        margin-bottom:10px;
+        color:#0f172a;
+    }
+
+    ul{
+        padding-left:25px;
+    }
+
+    li{
+        margin-bottom:8px;
+    }
+
+    .formula{
+        background:#eef2ff;
+        border-left:5px solid #2563eb;
+        padding:18px;
+        border-radius:10px;
+        margin:15px 0;
+        font-family:monospace;
+        font-size:1rem;
+    }
+
+    .grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+        gap:20px;
+        margin-top:20px;
+    }
+
+    .feature{
+        background:linear-gradient(135deg,#ffffff,#f1f5ff);
+        border:1px solid #dbeafe;
+        padding:22px;
+        border-radius:15px;
+    }
+
+    .feature h4{
+        color:#1d4ed8;
+        margin-bottom:8px;
+    }
+
+    table{
+        width:100%;
+        border-collapse:collapse;
+        margin-top:15px;
+    }
+
+    table th{
+        background:#1e3a8a;
+        color:white;
+        padding:14px;
+    }
+
+    table td{
+        padding:14px;
+        border-bottom:1px solid #e5e7eb;
+    }
+
+    .highlight{
+        background:linear-gradient(135deg,#1e3a8a,#2563eb);
+        color:white;
+        padding:40px;
+        border-radius:18px;
+        margin-top:25px;
+    }
+
+    footer{
+        background:#0f172a;
+        color:white;
+        text-align:center;
+        padding:25px;
+        margin-top:40px;
+    }
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+    <div class="badge">Advanced Technical Indicator</div>
+    <h1>SMIIO Indicator (SMI Ergodic Oscillator)</h1>
+    <p>
+        The SMIIO (Stochastic Momentum Index & Ergodic Oscillator) is a powerful momentum-based indicator
+        that helps traders identify trend direction, strength, and potential reversal zones with higher accuracy.
+    </p>
+</section>
+
+<div class="container">
+
+    <div class="card">
+        <h2>What is the SMIIO Indicator?</h2>
+        <p>
+            The SMIIO (often referred to as the SMI Ergodic Oscillator) is a refined momentum indicator derived from
+            the Stochastic Momentum Index (SMI) and William Blau’s Ergodic principles.
+        </p>
+
+        <p>
+            It is designed to smooth price movement while capturing true market momentum.
+            Unlike basic oscillators, SMIIO reduces noise and provides clearer signals about trend strength
+            and reversals.
+        </p>
+
+        <ul>
+            <li>Measures momentum relative to price range midpoint.</li>
+            <li>Uses double smoothing for cleaner signals.</li>
+            <li>Helps identify trend continuation and reversals.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>How the SMIIO Works</h2>
+
+        <p>
+            The SMIIO compares the closing price to the median of a recent high-low range,
+            then applies multiple smoothing techniques.
+        </p>
+
+        <div class="formula">
+            Step 1: Price Distance = Close − Midpoint of High/Low range
+        </div>
+
+        <div class="formula">
+            Step 2: Apply double exponential smoothing to reduce noise
+        </div>
+
+        <div class="formula">
+            Step 3: Signal Line = Smoothed Momentum (EMA of SMI line)
+        </div>
+
+        <p>
+            The interaction between the SMI line and signal line generates trading signals.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Key Components</h2>
+
+        <div class="grid">
+
+            <div class="feature">
+                <h4>SMI Line</h4>
+                <p>
+                    Represents smoothed momentum of price movement relative to range midpoint.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h4>Signal Line</h4>
+                <p>
+                    EMA of the SMI line used to trigger crossovers and confirm trends.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h4>Zero Line</h4>
+                <p>
+                    Indicates neutral momentum. Above zero = bullish, below zero = bearish.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h4>Oscillator Spread</h4>
+                <p>
+                    Distance between SMI and signal line, showing strength of momentum.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Trading Signals</h2>
+
+        <h3>Bullish Signal</h3>
+        <ul>
+            <li>SMI crosses above signal line</li>
+            <li>Both lines move above zero</li>
+            <li>Momentum is strengthening upward</li>
+        </ul>
+
+        <h3>Bearish Signal</h3>
+        <ul>
+            <li>SMI crosses below signal line</li>
+            <li>Both lines fall below zero</li>
+            <li>Downtrend momentum increases</li>
+        </ul>
+
+        <h3>Divergence Signals</h3>
+        <ul>
+            <li>Price makes higher high but SMI forms lower high → bearish divergence</li>
+            <li>Price makes lower low but SMI forms higher low → bullish divergence</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Best Settings</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Default Value</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Momentum Length</td>
+                    <td>10–14</td>
+                    <td>Controls sensitivity of momentum detection</td>
+                </tr>
+                <tr>
+                    <td>Smoothing Period</td>
+                    <td>3–5</td>
+                    <td>Reduces noise in price fluctuations</td>
+                </tr>
+                <tr>
+                    <td>Signal EMA</td>
+                    <td>3–9</td>
+                    <td>Generates smoother signal line</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Advantages of SMIIO</h2>
+        <ul>
+            <li>Highly accurate momentum detection</li>
+            <li>Reduced market noise compared to RSI or Stochastic</li>
+            <li>Works well in trending and reversal markets</li>
+            <li>Early signal detection through smoothing technique</li>
+            <li>Effective divergence identification</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Limitations</h2>
+        <ul>
+            <li>Can lag in extremely volatile conditions</li>
+            <li>May produce false signals in sideways markets</li>
+            <li>Requires confirmation from trend indicators like EMA or MACD</li>
+            <li>Not ideal as a standalone trading system</li>
+        </ul>
+    </div>
+
+    <div class="highlight">
+        <h2 style="color:white;">Pro Trading Insight</h2>
+        <p>
+            The SMIIO works best when combined with trend-following tools such as moving averages or price structure analysis.
+            Traders often use SMIIO for timing entries after identifying trend direction using higher timeframe analysis.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    <p>SMIIO Indicator Guide • Momentum & Trend Analysis Tool</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Williams Fractal Indicator - Complete Guide</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --primary:#2563eb;
+    --secondary:#7c3aed;
+    --dark:#0f172a;
+    --light:#f8fafc;
+    --card:#ffffff;
+    --text:#334155;
+    --success:#16a34a;
+    --danger:#dc2626;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#f1f5f9;
+    color:var(--text);
+    line-height:1.7;
+}
+
+.hero{
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#7c3aed);
+    color:white;
+    padding:90px 20px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:3.5rem;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:850px;
+    margin:auto;
+    font-size:1.15rem;
+    opacity:0.95;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+.section{
+    margin-bottom:70px;
+}
+
+.section-title{
+    font-size:2.2rem;
+    color:var(--dark);
+    margin-bottom:20px;
+    position:relative;
+}
+
+.section-title::after{
+    content:"";
+    width:70px;
+    height:4px;
+    background:var(--primary);
+    display:block;
+    margin-top:10px;
+    border-radius:20px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    margin-top:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.feature{
+    background:white;
+    padding:25px;
+    border-radius:16px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    transition:.3s;
+}
+
+.feature:hover{
+    transform:translateY(-5px);
+}
+
+.feature h3{
+    color:var(--primary);
+    margin-bottom:15px;
+}
+
+.fractal-box{
+    padding:25px;
+    border-radius:16px;
+    color:white;
+}
+
+.bullish{
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+}
+
+.bearish{
+    background:linear-gradient(135deg,#dc2626,#ef4444);
+}
+
+.fractal-diagram{
+    text-align:center;
+    font-size:1.1rem;
+    margin-top:20px;
+    font-weight:600;
+    letter-spacing:2px;
+}
+
+.formula{
+    background:#0f172a;
+    color:#fff;
+    padding:20px;
+    border-radius:12px;
+    margin-top:15px;
+    overflow:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table th{
+    background:var(--primary);
+    color:white;
+}
+
+table th,
+table td{
+    padding:15px;
+    border:1px solid #e2e8f0;
+    text-align:center;
+}
+
+.advantages{
+    border-left:5px solid var(--success);
+}
+
+.limitations{
+    border-left:5px solid var(--danger);
+}
+
+.footer{
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.badge{
+    display:inline-block;
+    background:#dbeafe;
+    color:#1d4ed8;
+    padding:8px 15px;
+    border-radius:30px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.highlight{
+    color:var(--primary);
+    font-weight:700;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:2.4rem;
+}
+
+.section-title{
+    font-size:1.8rem;
+}
+
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="badge">Technical Analysis Guide</div>
+    <h1>Williams Fractal Indicator</h1>
+    <p>
+        A complete guide to understanding the Williams Fractal Indicator,
+        how it identifies market turning points, support and resistance zones,
+        breakout opportunities, and how traders use it to improve decision making.
+    </p>
+</section>
+
+<div class="container">
+
+    <section class="section">
+        <h2 class="section-title">What is the Williams Fractal Indicator?</h2>
+
+        <div class="card">
+            <p>
+                The <span class="highlight">Williams Fractal Indicator</span> is a popular
+                technical analysis tool developed by trader Bill Williams.
+                It helps traders identify potential reversal points in financial markets.
+            </p>
+
+            <br>
+
+            <p>
+                A fractal is a repeating price pattern consisting of five consecutive
+                candlesticks. These formations help traders recognize swing highs
+                and swing lows where price may reverse direction.
+            </p>
+
+            <br>
+
+            <p>
+                The indicator is commonly used in stocks, forex, commodities,
+                cryptocurrencies, and indices across multiple timeframes.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Types of Fractals</h2>
+
+        <div class="grid">
+
+            <div class="fractal-box bullish">
+                <h3>Bullish Fractal ▼</h3>
+
+                <p>
+                    Indicates a potential market bottom.
+                    The middle candle has the lowest low among five candles.
+                </p>
+
+                <div class="fractal-diagram">
+                    Bar1 &nbsp; Bar2 &nbsp; ▼ &nbsp; Bar4 &nbsp; Bar5
+                </div>
+
+                <p style="margin-top:20px;">
+                    Traders often view this area as a support zone.
+                </p>
+            </div>
+
+            <div class="fractal-box bearish">
+                <h3>Bearish Fractal ▲</h3>
+
+                <p>
+                    Indicates a potential market top.
+                    The middle candle has the highest high among five candles.
+                </p>
+
+                <div class="fractal-diagram">
+                    Bar1 &nbsp; Bar2 &nbsp; ▲ &nbsp; Bar4 &nbsp; Bar5
+                </div>
+
+                <p style="margin-top:20px;">
+                    Traders often view this area as a resistance zone.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">How Williams Fractals Work</h2>
+
+        <div class="card">
+
+            <h3>Bearish Fractal Conditions</h3>
+
+            <div class="formula">
+                High(3) > High(1)<br>
+                High(3) > High(2)<br>
+                High(3) > High(4)<br>
+                High(3) > High(5)
+            </div>
+
+            <br>
+
+            <h3>Bullish Fractal Conditions</h3>
+
+            <div class="formula">
+                Low(3) < Low(1)<br>
+                Low(3) < Low(2)<br>
+                Low(3) < Low(4)<br>
+                Low(3) < Low(5)
+            </div>
+
+            <br>
+
+            <p>
+                The signal only becomes valid after the fifth candle closes.
+                Therefore, fractals are considered lagging indicators because
+                confirmation requires two candles after the central candle.
+            </p>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Practical Example</h2>
+
+        <div class="card">
+
+            <p>
+                Suppose the highs of five consecutive candles are:
+            </p>
+
+            <table>
+                <tr>
+                    <th>Candle</th>
+                    <th>High Price</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>105</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>110</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>103</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>101</td>
+                </tr>
+            </table>
+
+            <br>
+
+            <p>
+                Since Candle 3 has the highest high among all five candles,
+                a bearish fractal forms above Candle 3.
+            </p>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">How Traders Use Fractals</h2>
+
+        <div class="grid">
+
+            <div class="feature">
+                <h3>Support & Resistance</h3>
+                <p>
+                    Bullish fractals frequently identify support zones,
+                    while bearish fractals identify resistance levels.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>Breakout Trading</h3>
+                <p>
+                    Traders often enter long positions when price breaks
+                    above the most recent bearish fractal.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>Trend Confirmation</h3>
+                <p>
+                    Fractals become more reliable when traded in the direction
+                    of the prevailing trend.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>Stop Loss Placement</h3>
+                <p>
+                    Traders frequently place stop losses beyond the latest
+                    bullish or bearish fractal level.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Advantages & Limitations</h2>
+
+        <div class="grid">
+
+            <div class="card advantages">
+                <h3>Advantages</h3>
+                <ul>
+                    <li>Simple and easy to understand.</li>
+                    <li>Works on all markets and timeframes.</li>
+                    <li>Helps identify swing highs and lows.</li>
+                    <li>Useful for breakout strategies.</li>
+                    <li>Complements trend indicators.</li>
+                </ul>
+            </div>
+
+            <div class="card limitations">
+                <h3>Limitations</h3>
+                <ul>
+                    <li>Signals appear after confirmation.</li>
+                    <li>Can generate many signals in sideways markets.</li>
+                    <li>Should not be used alone.</li>
+                    <li>Requires trend confirmation.</li>
+                    <li>May produce false breakouts.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Best Practices</h2>
+
+        <div class="card">
+            <p>
+                Professional traders rarely use Williams Fractals alone.
+                Instead, they combine them with:
+            </p>
+
+            <br>
+
+            <ul>
+                <li>Moving Averages</li>
+                <li>Trendlines</li>
+                <li>RSI (Relative Strength Index)</li>
+                <li>MACD</li>
+                <li>Bill Williams Alligator Indicator</li>
+                <li>Volume Analysis</li>
+            </ul>
+
+            <br>
+
+            <p>
+                Combining fractals with trend-following indicators significantly
+                improves the probability of successful trades.
+            </p>
+        </div>
+    </section>
+
+</div>
+
+<footer class="footer">
+    <h3>Williams Fractal Indicator</h3>
+    <p>
+        Understanding market structure through fractal price patterns.
+    </p>
+</footer>
+
+</body>
+</html>

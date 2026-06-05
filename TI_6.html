@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Awesome Oscillator (AO) - Complete Guide</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:#e2e8f0;
+    line-height:1.8;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+    radial-gradient(circle at top left,#7c3aed 0%,transparent 40%),
+    radial-gradient(circle at bottom right,#06b6d4 0%,transparent 40%),
+    #0f172a;
+    padding:80px 20px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero h1{
+    font-size:4rem;
+    font-weight:800;
+    margin-bottom:20px;
+    background:linear-gradient(90deg,#60a5fa,#22d3ee,#a78bfa);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    font-size:1.25rem;
+    color:#cbd5e1;
+    margin-bottom:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 30px;
+    border-radius:50px;
+    background:linear-gradient(135deg,#3b82f6,#8b5cf6);
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(99,102,241,.4);
+}
+
+section{
+    padding:80px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:2.5rem;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    color:#94a3b8;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:30px;
+    backdrop-filter:blur(10px);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    border-color:#60a5fa;
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:#60a5fa;
+}
+
+.highlight{
+    color:#22d3ee;
+    font-weight:700;
+}
+
+.formula{
+    background:#020617;
+    border-left:5px solid #22d3ee;
+    padding:25px;
+    border-radius:12px;
+    margin:30px 0;
+    font-size:1.2rem;
+    overflow-x:auto;
+}
+
+.timeline{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.step{
+    background:rgba(255,255,255,0.04);
+    padding:25px;
+    border-radius:16px;
+    border-left:4px solid #8b5cf6;
+}
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:#1e293b;
+    padding:15px;
+    text-align:left;
+}
+
+table td{
+    padding:15px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    background:#020617;
+    color:#94a3b8;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 16px;
+    background:rgba(96,165,250,.15);
+    color:#60a5fa;
+    border-radius:50px;
+    margin-bottom:20px;
+    font-size:.9rem;
+}
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:2.8rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="badge">Technical Analysis Indicator</div>
+        <h1>Awesome Oscillator (AO)</h1>
+        <p>
+            A powerful momentum indicator developed by Bill Williams that helps traders
+            identify market momentum, trend shifts, bullish opportunities, and bearish reversals.
+        </p>
+        <a href="#overview" class="btn">Explore AO Indicator</a>
+    </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview">
+    <div class="container">
+        <div class="section-title">
+            <h2>What is the Awesome Oscillator?</h2>
+            <p>Understanding one of the most popular momentum indicators in technical analysis.</p>
+        </div>
+
+        <div class="card">
+            <p>
+                The <span class="highlight">Awesome Oscillator (AO)</span> is a momentum-based
+                technical indicator created by renowned trader <strong>Bill Williams</strong>.
+                It measures market momentum by comparing a short-term moving average to a
+                longer-term moving average.
+            </p>
+
+            <br>
+
+            <p>
+                AO helps traders determine whether bullish or bearish forces are currently
+                dominating the market. It is displayed as a histogram oscillating around a
+                zero line, making trend analysis visually intuitive.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- FORMULA -->
+<section>
+    <div class="container">
+        <div class="section-title">
+            <h2>Calculation Formula</h2>
+            <p>How the Awesome Oscillator is calculated.</p>
+        </div>
+
+        <div class="formula">
+            AO = SMA(5) of Median Price − SMA(34) of Median Price
+            <br><br>
+            Median Price = (High + Low) / 2
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>5-Period SMA</h3>
+                <p>
+                    Represents short-term market momentum and reacts quickly
+                    to price changes.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>34-Period SMA</h3>
+                <p>
+                    Represents longer-term momentum and smooths out
+                    short-term fluctuations.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Histogram</h3>
+                <p>
+                    The difference between these averages is plotted as
+                    green and red histogram bars around the zero line.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INTERPRETATION -->
+<section>
+    <div class="container">
+        <div class="section-title">
+            <h2>How to Interpret AO</h2>
+            <p>Understanding bullish and bearish momentum.</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Above Zero</h3>
+                <p>
+                    Indicates bullish momentum. Buyers are gaining strength
+                    and the uptrend may continue.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Below Zero</h3>
+                <p>
+                    Indicates bearish momentum. Sellers dominate and
+                    downward pressure may increase.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Crossing Zero Line</h3>
+                <p>
+                    A transition between bullish and bearish momentum.
+                    Traders often view this as a potential trend signal.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SIGNALS -->
+<section>
+    <div class="container">
+        <div class="section-title">
+            <h2>Major Trading Signals</h2>
+            <p>The three most popular AO trading setups.</p>
+        </div>
+
+        <div class="timeline">
+
+            <div class="step">
+                <h3>1. Zero Line Cross</h3>
+                <p>
+                    When AO crosses from below zero to above zero,
+                    it suggests bullish momentum. A move from above
+                    to below zero suggests bearish momentum.
+                </p>
+            </div>
+
+            <div class="step">
+                <h3>2. Twin Peaks Pattern</h3>
+                <p>
+                    A bullish twin peak occurs below the zero line
+                    when the second trough is higher than the first.
+                    A bearish twin peak occurs above the zero line.
+                </p>
+            </div>
+
+            <div class="step">
+                <h3>3. Saucer Setup</h3>
+                <p>
+                    A bullish saucer consists of two consecutive red bars
+                    followed by a green bar above zero. The bearish version
+                    occurs below zero.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ADVANTAGES -->
+<section>
+    <div class="container">
+        <div class="section-title">
+            <h2>Advantages & Limitations</h2>
+            <p>Every indicator has strengths and weaknesses.</p>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Advantages</th>
+                        <th>Limitations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Easy to read histogram structure</td>
+                        <td>Can generate false signals in sideways markets</td>
+                    </tr>
+                    <tr>
+                        <td>Excellent for momentum analysis</td>
+                        <td>Not ideal as a standalone indicator</td>
+                    </tr>
+                    <tr>
+                        <td>Useful for trend confirmation</td>
+                        <td>Lagging because it uses moving averages</td>
+                    </tr>
+                    <tr>
+                        <td>Works across multiple timeframes</td>
+                        <td>Requires risk management and confirmation tools</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- STRATEGY -->
+<section>
+    <div class="container">
+        <div class="section-title">
+            <h2>Practical Trading Strategy</h2>
+            <p>Combining AO with trend analysis.</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Step 1</h3>
+                <p>
+                    Identify the overall market trend using moving averages
+                    or price structure.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Step 2</h3>
+                <p>
+                    Wait for AO to confirm momentum through a
+                    zero-line cross or saucer signal.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Step 3</h3>
+                <p>
+                    Enter with trend confirmation and use
+                    stop-loss protection.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Step 4</h3>
+                <p>
+                    Exit when momentum weakens or AO generates
+                    an opposite signal.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONCLUSION -->
+<section>
+    <div class="container">
+        <div class="card" style="text-align:center;">
+            <h2 style="margin-bottom:20px;">Final Thoughts</h2>
+            <p>
+                The Awesome Oscillator is one of the most effective momentum
+                indicators for identifying trend strength and potential reversals.
+                While it should not be used alone, combining it with support &
+                resistance, moving averages, price action, and volume analysis
+                can significantly improve trading decisions.
+            </p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>Awesome Oscillator (AO) Educational Guide • Technical Analysis Reference</p>
+</footer>
+
+</body>
+</html>
