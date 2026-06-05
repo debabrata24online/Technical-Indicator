@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RSI - Relative Strength Index Explained</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #e2e8f0;
+        line-height: 1.6;
+    }
+
+    header {
+        padding: 60px 20px;
+        text-align: center;
+        background: radial-gradient(circle at top, #38bdf8, #0ea5e9, #0f172a);
+    }
+
+    header h1 {
+        font-size: 3rem;
+        margin: 0;
+    }
+
+    header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 40px 20px;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+        color: #38bdf8;
+        margin-top: 0;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    .highlight {
+        color: #fbbf24;
+        font-weight: bold;
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px;
+        font-size: 0.9rem;
+        opacity: 0.7;
+    }
+
+    .rsi-box {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .level {
+        flex: 1;
+        min-width: 200px;
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
+        background: rgba(255,255,255,0.07);
+    }
+
+    .overbought { border-left: 5px solid #ef4444; }
+    .neutral { border-left: 5px solid #facc15; }
+    .oversold { border-left: 5px solid #22c55e; }
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>RSI (Relative Strength Index)</h1>
+    <p>A powerful momentum indicator used in technical analysis to measure price strength and identify overbought or oversold conditions</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>What is RSI?</h2>
+        <p>
+            The <span class="highlight">Relative Strength Index (RSI)</span> is a momentum oscillator
+            developed by J. Welles Wilder. It measures the speed and magnitude of recent price changes
+            to evaluate whether an asset is overbought or oversold.
+        </p>
+        <p>
+            RSI values range from <span class="highlight">0 to 100</span>.
+            It is widely used in stock, forex, and cryptocurrency trading.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>How RSI is Calculated</h2>
+        <p>
+            RSI is calculated using average gains and average losses over a specific period (commonly 14 periods):
+        </p>
+        <p class="highlight">
+            RSI = 100 - (100 / (1 + RS))
+        </p>
+        <p>
+            Where RS = Average Gain / Average Loss
+        </p>
+        <p>
+            Although the formula looks technical, most trading platforms calculate it automatically.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>RSI Levels Explained</h2>
+
+        <div class="rsi-box">
+
+            <div class="level overbought">
+                <h3>Overbought</h3>
+                <p class="highlight">70 - 100</p>
+                <p>Indicates the asset may be overvalued and could face a pullback or correction.</p>
+            </div>
+
+            <div class="level neutral">
+                <h3>Neutral Zone</h3>
+                <p class="highlight">30 - 70</p>
+                <p>Market is in normal range with no strong overbought or oversold signals.</p>
+            </div>
+
+            <div class="level oversold">
+                <h3>Oversold</h3>
+                <p class="highlight">0 - 30</p>
+                <p>Indicates the asset may be undervalued and could bounce upward.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>How Traders Use RSI</h2>
+        <ul>
+            <li>Identify potential <span class="highlight">trend reversals</span></li>
+            <li>Confirm entry and exit points</li>
+            <li>Spot divergence between price and momentum</li>
+            <li>Combine with other indicators like Moving Averages or MACD</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>RSI Divergence (Advanced Concept)</h2>
+        <p>
+            Divergence occurs when price moves in one direction while RSI moves in the opposite direction.
+        </p>
+        <ul>
+            <li><span class="highlight">Bullish Divergence:</span> Price falls but RSI rises → potential upward reversal</li>
+            <li><span class="highlight">Bearish Divergence:</span> Price rises but RSI falls → potential downward reversal</li>
+        </ul>
+        <p>
+            Divergence is considered one of the strongest signals in technical analysis when confirmed with other tools.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    Built for learning Technical Analysis | RSI Indicator Guide
+</footer>
+
+</body>
+</html>

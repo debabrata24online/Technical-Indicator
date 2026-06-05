@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MACD Explained - Technical Indicator Guide</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        background: linear-gradient(135deg, #0b1220, #111827);
+        color: #e5e7eb;
+        line-height: 1.7;
+    }
+
+    header {
+        padding: 70px 20px;
+        text-align: center;
+        background: radial-gradient(circle at top, #a78bfa, #0b1220);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 3rem;
+        color: white;
+        letter-spacing: 1px;
+    }
+
+    header p {
+        max-width: 850px;
+        margin: 15px auto 0;
+        font-size: 1.2rem;
+        color: #c7d2fe;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 40px 20px;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 20px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+        color: #a78bfa;
+        margin-top: 0;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    .highlight {
+        color: #34d399;
+        font-weight: bold;
+    }
+
+    .formula {
+        background: rgba(167, 139, 250, 0.1);
+        border-left: 4px solid #a78bfa;
+        padding: 15px;
+        border-radius: 10px;
+        font-family: monospace;
+        margin-top: 10px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px;
+        font-size: 0.9rem;
+        color: #9ca3af;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .tag {
+        display: inline-block;
+        background: rgba(52, 211, 153, 0.15);
+        color: #34d399;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        margin-top: 8px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>MACD Indicator</h1>
+    <p>
+        The Moving Average Convergence Divergence (MACD) is one of the most powerful momentum indicators used in technical analysis to identify trend direction, strength, and potential reversals.
+    </p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>What is MACD?</h2>
+        <p>
+            <span class="highlight">MACD (Moving Average Convergence Divergence)</span> is a trend-following momentum indicator that shows the relationship between two moving averages of an asset’s price.
+            It helps traders understand whether momentum is strengthening or weakening.
+        </p>
+        <span class="tag">Trend + Momentum Indicator</span>
+    </div>
+
+    <div class="card">
+        <h2>MACD Formula</h2>
+        <p>MACD is calculated using exponential moving averages (EMA):</p>
+
+        <div class="formula">
+            MACD Line = 12-period EMA − 26-period EMA
+        </div>
+
+        <div class="formula">
+            Signal Line = 9-period EMA of MACD Line
+        </div>
+
+        <div class="formula">
+            Histogram = MACD Line − Signal Line
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Components of MACD</h2>
+        <ul>
+            <li><b>MACD Line:</b> Measures momentum difference between fast and slow EMA.</li>
+            <li><b>Signal Line:</b> Smooths MACD line to generate trading signals.</li>
+            <li><b>Histogram:</b> Shows distance between MACD and Signal line (momentum strength).</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>How Traders Use MACD</h2>
+        <ul>
+            <li><b>Bullish Signal:</b> MACD line crosses above Signal line → potential buy</li>
+            <li><b>Bearish Signal:</b> MACD line crosses below Signal line → potential sell</li>
+            <li><b>Zero Line Cross:</b> Above zero = bullish trend, below zero = bearish trend</li>
+            <li><b>Divergence:</b> Price and MACD moving opposite → possible reversal</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>MACD Trading Strategies</h2>
+        <ul>
+            <li><b>Signal Line Crossover Strategy:</b> Buy/sell based on crossovers</li>
+            <li><b>Zero Line Strategy:</b> Trade direction based on MACD above/below zero</li>
+            <li><b>Divergence Strategy:</b> Spot early reversals using momentum mismatch</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Strengths of MACD</h2>
+        <ul>
+            <li>Works well in trending markets</li>
+            <li>Combines trend and momentum in one tool</li>
+            <li>Helps identify reversals early</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Limitations of MACD</h2>
+        <ul>
+            <li>Can lag in fast-moving markets</li>
+            <li>False signals in sideways markets</li>
+            <li>Requires confirmation from other indicators</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Final Insight</h2>
+        <p>
+            MACD is most effective when combined with other tools like RSI, support/resistance, and price action.
+            It is not a standalone prediction tool but a powerful confirmation indicator.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    Built for traders & learners • MACD Technical Analysis Guide
+</footer>
+
+</body>
+</html>

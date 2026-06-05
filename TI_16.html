@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Stochastic Oscillator Indicator</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #e2e8f0;
+        line-height: 1.7;
+    }
+
+    header {
+        padding: 60px 20px;
+        text-align: center;
+        background: radial-gradient(circle at top, #38bdf8, #0f172a);
+    }
+
+    header h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+        color: #ffffff;
+    }
+
+    header p {
+        font-size: 18px;
+        color: #cbd5e1;
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 40px 20px;
+    }
+
+    .card {
+        background: #111827;
+        padding: 25px;
+        margin-bottom: 25px;
+        border-radius: 14px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        border: 1px solid #1f2937;
+    }
+
+    h2 {
+        color: #38bdf8;
+        margin-bottom: 10px;
+    }
+
+    .formula {
+        background: #0b1220;
+        padding: 15px;
+        border-left: 4px solid #38bdf8;
+        font-family: monospace;
+        margin: 10px 0;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    .highlight {
+        color: #fbbf24;
+        font-weight: bold;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 14px;
+        color: #94a3b8;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 5px 10px;
+        background: #38bdf8;
+        color: #0f172a;
+        border-radius: 20px;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Stochastic Oscillator Indicator</h1>
+    <p>
+        A powerful momentum indicator used in technical analysis to identify
+        overbought and oversold conditions in financial markets.
+    </p>
+    <div class="badge">Technical Analysis Tool</div>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>What is the Stochastic Oscillator?</h2>
+        <p>
+            The Stochastic Oscillator is a momentum indicator developed by
+            <span class="highlight">George C. Lane</span> in the 1950s.
+            It compares a security’s closing price to its price range over a specific period of time.
+        </p>
+        <p>
+            The idea behind it is simple: in an uptrend, prices tend to close near the high,
+            and in a downtrend, they tend to close near the low.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Formula</h2>
+        <div class="formula">
+            %K = (Current Close - Lowest Low) / (Highest High - Lowest Low) × 100
+        </div>
+        <p>
+            Where:
+            <ul>
+                <li><b>Current Close</b>: Latest closing price</li>
+                <li><b>Lowest Low</b>: Lowest price in the lookback period</li>
+                <li><b>Highest High</b>: Highest price in the lookback period</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>How It Works</h2>
+        <p>
+            The indicator oscillates between <span class="highlight">0 and 100</span>.
+        </p>
+        <ul>
+            <li><span class="highlight">Above 80</span> → Overbought condition (possible reversal down)</li>
+            <li><span class="highlight">Below 20</span> → Oversold condition (possible reversal up)</li>
+        </ul>
+        <p>
+            It is commonly used with a signal line (%D), which is a moving average of %K.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Trading Signals</h2>
+        <ul>
+            <li><b>Buy Signal:</b> When %K crosses above %D in oversold zone</li>
+            <li><b>Sell Signal:</b> When %K crosses below %D in overbought zone</li>
+            <li><b>Divergence:</b> Price moves opposite to indicator → potential reversal</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Types of Stochastic Oscillator</h2>
+        <ul>
+            <li><b>Fast Stochastic:</b> More sensitive, produces more signals</li>
+            <li><b>Slow Stochastic:</b> Smoothed version, fewer false signals</li>
+            <li><b>Full Stochastic:</b> Customizable version of both %K and %D</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Advantages & Limitations</h2>
+        <p><b>Advantages:</b></p>
+        <ul>
+            <li>Helps identify market turning points</li>
+            <li>Works well in range-bound markets</li>
+            <li>Easy to interpret</li>
+        </ul>
+
+        <p><b>Limitations:</b></p>
+        <ul>
+            <li>Can give false signals in strong trends</li>
+            <li>Requires confirmation from other indicators</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Conclusion</h2>
+        <p>
+            The Stochastic Oscillator is a widely used momentum tool in technical analysis.
+            When combined with other indicators like RSI or Moving Averages,
+            it becomes even more powerful for identifying trade opportunities.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    Built for learning Technical Analysis • Stochastic Oscillator Guide
+</footer>
+
+</body>
+</html>

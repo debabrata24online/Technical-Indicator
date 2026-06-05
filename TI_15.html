@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bollinger Bands Explained</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #e2e8f0;
+        line-height: 1.6;
+    }
+
+    header {
+        padding: 60px 20px;
+        text-align: center;
+        background: radial-gradient(circle at top, #38bdf8, #0f172a);
+    }
+
+    header h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
+
+    header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 40px 20px;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 16px;
+        padding: 25px;
+        margin-bottom: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        backdrop-filter: blur(10px);
+    }
+
+    h2 {
+        color: #38bdf8;
+        margin-bottom: 10px;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    .highlight {
+        color: #fbbf24;
+        font-weight: bold;
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px;
+        font-size: 0.9rem;
+        opacity: 0.7;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 5px 10px;
+        background: #38bdf8;
+        color: #0f172a;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Bollinger Bands</h1>
+    <p>A powerful volatility-based technical analysis indicator used in trading markets</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <span class="badge">Overview</span>
+        <h2>What are Bollinger Bands?</h2>
+        <p>
+            <span class="highlight">Bollinger Bands</span> are a technical analysis tool created by
+            <b>John Bollinger</b>. They are used to measure market volatility and identify potential
+            overbought or oversold conditions.
+        </p>
+        <p>
+            They consist of three lines plotted on a price chart:
+        </p>
+        <ul>
+            <li><b>Middle Band:</b> Simple Moving Average (SMA), usually 20 periods</li>
+            <li><b>Upper Band:</b> SMA + 2 standard deviations</li>
+            <li><b>Lower Band:</b> SMA - 2 standard deviations</li>
+        </ul>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h2>How It Works</h2>
+            <p>
+                The bands expand and contract based on market volatility:
+            </p>
+            <ul>
+                <li><b>High volatility:</b> Bands widen</li>
+                <li><b>Low volatility:</b> Bands contract</li>
+            </ul>
+            <p>
+                Price movements near the upper band may indicate overbought conditions, while near the lower band may indicate oversold conditions.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Trading Signals</h2>
+            <ul>
+                <li>📈 <b>Breakout:</b> Price moving outside bands can signal strong momentum</li>
+                <li>🔄 <b>Reversal:</b> Price returning inside bands may indicate reversal</li>
+                <li>⚠️ <b>Squeeze:</b> Narrow bands often precede big price moves</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Bollinger Squeeze</h2>
+            <p>
+                A <span class="highlight">Bollinger Squeeze</span> occurs when the bands contract tightly,
+                indicating very low volatility. This often precedes a strong breakout in either direction.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="card">
+        <h2>Important Limitations</h2>
+        <ul>
+            <li>Not a standalone indicator — should be combined with volume or momentum indicators</li>
+            <li>False signals may occur in sideways markets</li>
+            <li>Works best in trending or volatile markets</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Practical Example</h2>
+        <p>
+            If a stock is trading in a strong uptrend and repeatedly touches the upper band,
+            it does not always mean it will reverse — it may indicate strong momentum instead.
+        </p>
+        <p>
+            Traders often combine Bollinger Bands with RSI or MACD for confirmation.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    Built for learning technical analysis • Bollinger Bands Explained
+</footer>
+
+</body>
+</html>

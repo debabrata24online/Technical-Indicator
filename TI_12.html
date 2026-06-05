@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SMA - Simple Moving Average Explained</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #e2e8f0;
+        line-height: 1.7;
+    }
+
+    header {
+        padding: 60px 20px;
+        text-align: center;
+        background: radial-gradient(circle at top, #38bdf8, #0f172a);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 3rem;
+        color: white;
+        letter-spacing: 1px;
+    }
+
+    header p {
+        font-size: 1.2rem;
+        color: #cbd5e1;
+        max-width: 800px;
+        margin: 15px auto 0;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 40px 20px;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+        color: #38bdf8;
+        margin-top: 0;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    .highlight {
+        color: #22c55e;
+        font-weight: bold;
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px;
+        font-size: 0.9rem;
+        color: #94a3b8;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .formula {
+        background: rgba(56, 189, 248, 0.1);
+        padding: 15px;
+        border-left: 4px solid #38bdf8;
+        border-radius: 8px;
+        font-family: monospace;
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Simple Moving Average (SMA)</h1>
+    <p>A powerful yet simple technical indicator used in financial markets to identify trends by smoothing price data over time.</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>What is SMA?</h2>
+        <p>
+            The <span class="highlight">Simple Moving Average (SMA)</span> is a technical analysis tool that calculates the average price of an asset over a specific number of periods.
+            It helps traders remove short-term price noise and identify the overall direction of a trend.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>How SMA is Calculated</h2>
+        <p>The formula for SMA is simple:</p>
+        <div class="formula">
+            SMA = (P1 + P2 + P3 + ... + Pn) / n
+        </div>
+        <p>
+            Where <b>P</b> represents price values and <b>n</b> is the number of periods.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>How Traders Use SMA</h2>
+        <ul>
+            <li><b>Trend Identification:</b> If price is above SMA → Uptrend; below SMA → Downtrend.</li>
+            <li><b>Support & Resistance:</b> SMA often acts as dynamic support or resistance.</li>
+            <li><b>Crossovers:</b> When short-term SMA crosses long-term SMA, it signals potential buy/sell opportunities.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Common SMA Periods</h2>
+        <ul>
+            <li><b>5 or 10 SMA:</b> Very short-term trend (fast signals, more noise)</li>
+            <li><b>20 SMA:</b> Short-term trading</li>
+            <li><b>50 SMA:</b> Medium-term trend</li>
+            <li><b>200 SMA:</b> Long-term trend (widely used by investors)</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Advantages of SMA</h2>
+        <ul>
+            <li>Simple and easy to understand</li>
+            <li>Smooths out price fluctuations</li>
+            <li>Helps identify long-term trend direction</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Limitations of SMA</h2>
+        <ul>
+            <li>Lagging indicator (reacts late to price changes)</li>
+            <li>Can produce false signals in sideways markets</li>
+            <li>Not predictive, only descriptive</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Final Insight</h2>
+        <p>
+            SMA is one of the most widely used tools in technical analysis. While it is simple, it becomes powerful when combined with other indicators like RSI, MACD, or price action strategies.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    Built to explain SMA clearly for traders and learners • Technical Analysis Education
+</footer>
+
+</body>
+</html>

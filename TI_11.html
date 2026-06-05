@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EMA - Exponential Moving Average Explained</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #e2e8f0;
+        line-height: 1.6;
+    }
+
+    header {
+        padding: 40px 20px;
+        text-align: center;
+        background: rgba(0,0,0,0.3);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        color: #38bdf8;
+    }
+
+    header p {
+        font-size: 1.1rem;
+        color: #cbd5e1;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 30px 20px;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.05);
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+        color: #60a5fa;
+        margin-top: 0;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    .formula {
+        background: #0b1220;
+        padding: 15px;
+        border-left: 4px solid #38bdf8;
+        font-family: monospace;
+        margin: 10px 0;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 0.9rem;
+        color: #94a3b8;
+    }
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>EMA (Exponential Moving Average)</h1>
+    <p>A powerful technical indicator used in trading to analyze price trends and momentum.</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>What is EMA?</h2>
+        <p>
+            The Exponential Moving Average (EMA) is a type of moving average that gives more weight to recent prices.
+            Unlike the Simple Moving Average (SMA), EMA reacts faster to price changes, making it more useful for traders
+            who want timely signals in fast-moving markets.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Why EMA is Important</h2>
+        <ul>
+            <li>Helps identify market trends (uptrend or downtrend)</li>
+            <li>Reduces lag compared to SMA</li>
+            <li>Useful for entry and exit signals</li>
+            <li>Commonly used in day trading and swing trading</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>EMA Formula</h2>
+        <p>The EMA is calculated using the following formula:</p>
+        <div class="formula">
+            EMA = (Close - Previous EMA) × Multiplier + Previous EMA
+        </div>
+        <p>
+            Where:
+            <br><br>
+            Multiplier = 2 / (N + 1)<br>
+            N = Number of periods
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>How EMA Works</h2>
+        <p>
+            EMA assigns higher importance to recent price data. This means:
+        </p>
+        <ul>
+            <li>Recent prices influence the EMA more than older prices</li>
+            <li>It responds quickly to sudden price changes</li>
+            <li>It smooths out price fluctuations while staying sensitive</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Common EMA Strategies</h2>
+        <ul>
+            <li><b>EMA Crossover:</b> When a short-term EMA crosses above a long-term EMA, it signals a potential buy.</li>
+            <li><b>Golden Cross:</b> 50 EMA crosses above 200 EMA (bullish signal)</li>
+            <li><b>Death Cross:</b> 50 EMA crosses below 200 EMA (bearish signal)</li>
+            <li><b>Dynamic Support/Resistance:</b> EMA acts as moving support or resistance level</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Advantages & Limitations</h2>
+        <p><b>Advantages:</b></p>
+        <ul>
+            <li>Fast response to price changes</li>
+            <li>Better for short-term trading</li>
+        </ul>
+
+        <p><b>Limitations:</b></p>
+        <ul>
+            <li>Can produce false signals in sideways markets</li>
+            <li>More sensitive to noise than SMA</li>
+        </ul>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 EMA Educational Page | Built for learning technical analysis
+</footer>
+
+</body>
+</html>
